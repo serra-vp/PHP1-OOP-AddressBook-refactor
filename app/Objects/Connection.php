@@ -1,7 +1,8 @@
+<?php 
 
 //Inlude Interface Iconnect here..
 
-Class Connection {
+Class Connection implements IConnect {
 
 	//Variables
 
@@ -12,3 +13,5 @@ Class Connection {
 
 	//Add your methods below
 }
+
+?>

@@ -10,9 +10,9 @@ Query Helper:
 
 * /app/Objects/Connection.php = PHP class that holds the connection of our address.php
 
-* /app/Objects/IConnect.php = PHP interface class that blueprints the methods from Connection class
+* /app/Objects/IConnect.php = PHP interface class that blueprints the methods of Connection class
 
-* /app/Objects/Query.php = PHP Class that holds mysqli queries for CRUD operations
+* /app/Objects/Query.php = PHP Class that holds mysqli queries for CRUD operations.
 
 You also need to instantiate `Query` object and complete the `address.php`
 

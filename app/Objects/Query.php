@@ -2,7 +2,7 @@
 
 //Include Connection class here..
 
-Class Query extends Connection implements IConnect {
+Class Query extends Connection {
 	
 	public __construct()
 	{
