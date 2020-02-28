@@ -4,7 +4,7 @@ For your Object Oriented Mini Project you will need to simulate and convert `add
 
 ## Database
 
-The current address book application uses `mysql` you're task is to migrate it to a secure connection extension which is the [php mysqli](http://programmerblog.net/php-mysqli-tutorial-for-beginners/)
+The current address book application uses `mysql` you're task is to migrate it to [php mysqli](http://programmerblog.net/php-mysqli-tutorial-for-beginners/) extension.
 
 * sql.txt = Table and fields of the application.
 
