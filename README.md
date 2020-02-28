@@ -2,9 +2,11 @@
 
 For your Object Oriented Mini Project you will need to simulate and convert `address.php` into fully running Object Oriented design address book application.
 
-Query Helper:
+## Database
 
-- [php mysqli tutorial for beginners](http://programmerblog.net/php-mysqli-tutorial-for-beginners/)
+The current address book application uses `mysql` you're task is to migrate it to a secure connection extension which is the [php mysqli](http://programmerblog.net/php-mysqli-tutorial-for-beginners/)
+
+* sql.txt = Table and fields of the application.
 
 ## Requirements:
 
