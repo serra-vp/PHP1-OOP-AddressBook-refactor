@@ -1,6 +1,6 @@
 <?php 
 
-//Inlude Interface Iconnect here..
+//Include Interface Iconnect here..
 
 Class Connection implements IConnect {
 
