@@ -10,7 +10,7 @@ For your Object Oriented Mini Project you will need to simulate and convert `add
 
 sql.txt = Table and fields of the application.
 
-The current address book application uses `mysqli` you're task is to migrate it to PDO extension and bind the get parameters as  follows :
+The current address book application uses `mysqli` you're task is to migrate it to [PDO](https://websitebeaver.com/php-pdo-prepared-statements-to-prevent-sql-injection) extension and bind the get parameters as  follows :
 
 * name
 
