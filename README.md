@@ -31,6 +31,6 @@ You also need to instantiate `Query` object and complete the `app/address.php`
 
 # Finished
 
-Submit a link of the source code to the Google Classroom assignment related to this project.
+Submit a link to the Google Classroom assignment related to this project.
 
 
