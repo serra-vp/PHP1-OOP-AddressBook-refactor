@@ -8,7 +8,7 @@ For your Object Oriented Mini Project you will need to simulate and convert `add
 
 ## Database
 
-The current address book application uses `mysql` you're task is to migrate it to PDO extension.
+The current address book application uses `mysql` you're task is to migrate it to MYSQLI or PDO extension.
 
 * sql.txt = Table and fields of the application.
 
