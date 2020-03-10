@@ -6,7 +6,7 @@ Class Connection implements IConnect {
 
 	//Variables
 
-	public __construct()
+	public function __construct()
 	{
 
 	}
