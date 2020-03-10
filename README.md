@@ -25,7 +25,7 @@ The current address book application uses `mysqli` you're task is to migrate it 
 
 * `/app/Objects/IConnect.php` = PHP interface class that blueprints the methods of Connection class
 
-* `/app/Objects/Query.php` = PHP Class that holds mysqli queries for CRUD operations.
+* `/app/Objects/Query.php` = PHP Class that holds pdo queries of our CRUD operations.
 
 You also need to instantiate `Query` object and complete the `app/index.php`
 
