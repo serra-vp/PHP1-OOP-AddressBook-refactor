@@ -4,7 +4,7 @@
 
 Class Query extends Connection {
 	
-	public __construct()
+	public function __construct()
 	{
 
 	}
