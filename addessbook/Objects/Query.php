@@ -6,7 +6,7 @@ Class Query extends Connection {
 	
 	public function __construct()
 	{
-
+	   parent::_construct();
 	}
 
 	public function display()
@@ -14,12 +14,12 @@ Class Query extends Connection {
 	  //your select code here
 	}
 
-	public function insert($post)
+	public function insert($get)
 	{
 	  //your insert code here
 	}
 
-	public function update($id,$post)
+	public function update($id,$get)
 	{
 	 //your update code here
 	}
