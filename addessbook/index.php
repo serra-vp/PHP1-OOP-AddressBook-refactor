@@ -10,8 +10,8 @@ $self = $_SERVER['PHP_SELF'];
 /**
 	display()
 	insert($_GET)
-	update(1,$_GET)
-	delete(1)
+	update($id,$_GET)
+	delete($id)
 */
 
 ?>
