@@ -4,7 +4,7 @@ For your Object Oriented Mini Project you will need to simulate and convert `add
 
 ## Designs and Layout
 
-* Bootstrap or Foundation
+* Bootstrap, Foundation or any css framework.
 
 ## Database
 
