@@ -1,7 +1,11 @@
+<?php error_reporting(1); ?>
+
 <?php 
 //Inlude the Query class here ..
 
-//Available methods
+$self = $_SERVER['PHP_SELF'];
+
+//Default methods
 
 /**
 	display()
