@@ -5,8 +5,8 @@
 
 /**
 	display()
-	insert($_POST)
-	update(1,$_POST)
+	insert($_GET)
+	update(1,$_GET)
 	delete(1)
 */
 
