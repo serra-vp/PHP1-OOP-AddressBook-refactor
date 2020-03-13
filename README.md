@@ -21,7 +21,7 @@ The current address book application uses `mysqli` you're task is to migrate it 
 
 ## Requirements:
 
-* `/app/Objects/Connection.php` = PHP class that holds the connection of our address.php
+* `/app/Objects/Connection.php` = PHP class that holds the connection of our index.php
 
 * `/app/Objects/IConnect.php` = PHP interface class that blueprints the methods of Connection class
 
