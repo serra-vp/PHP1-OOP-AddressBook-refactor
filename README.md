@@ -27,7 +27,7 @@ The current address book application uses `mysqli` you're task is to migrate it 
 
 * `/app/Objects/Query.php` = PHP Class that holds pdo queries of our CRUD operations.
 
-You also need to instantiate `Query` object and complete the `addressbook/index.php`
+You also need to apply `all oop concepts` from week lesson in this mini project.
 
 # Finished
 
