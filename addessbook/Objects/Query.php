@@ -1,17 +1,26 @@
 <?php 
 
 //Include Connection class here..
+include './Connection.php';
 
 Class Query extends Connection {
 	
 	public function __construct()
 	{
-	   parent::_construct();
+	   parent::__construct();
 	}
 
 	public function display()
 	{
-	  //your select code here
+		//your select code here
+		$fetch_address_statement = $this->connect()->prepare("SELECT * FROM address");
+		$fetch_address_statement->execute();
+		
+
+
+		// $get_test_query = $database -> prepare("SELECT * FROM analysis, test WHERE analysis.analysis_ID = test.test_analysis_ID AND test.test_analysis_ID = ?");
+		// $get_test_query -> execute(array($selected_analysis_ID));
+		// while($get_test_row = $get_test_query -> fetch(PDO::FETCH_ASSOC)){
 	}
 
 	public function insert($get)
