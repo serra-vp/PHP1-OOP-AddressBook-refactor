@@ -20,7 +20,6 @@ Class Connection implements IConnect {
 	protected function connect(){
     $database = new PDO("mysql:host={$this->host};dbname={$this->databaseName};charset=utf8mb4', {$this->uname}, {$this->pword}");
     $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    session_start();
     return $database;
   }
 }

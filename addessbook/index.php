@@ -2,6 +2,7 @@
 
 <?php 
 //Inlude the Query class here ..
+include "./Objects/Query.php";
 
 $self = $_SERVER['PHP_SELF'];
 
@@ -14,6 +15,7 @@ $self = $_SERVER['PHP_SELF'];
 	delete($id)
 */
 
+$query = new Query();
 ?>
 
 
@@ -25,7 +27,6 @@ $self = $_SERVER['PHP_SELF'];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Address Book V.1.0</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">	
-	<script src="https://kit.fontawesome.com/yourcode.js"></script>
 	<style>
 		*{
 			margin: 0;
@@ -58,9 +59,10 @@ $self = $_SERVER['PHP_SELF'];
 
 		.contact-list{
 			margin: 0 auto;
-			border: 1px solid black;
+			border-radius: 12px;	
 			height: 70%;
 			width: 75%;
+			overflow: auto;
 		}
 
 		.add-contact{
@@ -75,6 +77,15 @@ $self = $_SERVER['PHP_SELF'];
 			align-self: flex-end;
 			margin: auto 0;
 		}
+
+		.action-column{
+			display: flex;
+		}
+
+		.btn-group{
+			margin: auto;
+		}
+		
 	</style>
 </head>
 <body>
@@ -86,36 +97,50 @@ $self = $_SERVER['PHP_SELF'];
 		</nav>
 	</header>
 	<div class="add-contact">
-		<button type="button" class="btn btn-dark"><i class="fas fa-clock"></i>Add Contact</button>
+		<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add-contact-modal">
+			Add Contact
+		</button>
+		<?php include "./assets/includes/add-contact-modal.inc.php"?>
 	</div>
 	<div class="contact-list">
-		<table class="table table-hover">
-			<thead>
+		<table class="table table-hover table-bordered">
+			<thead class="thead-dark">
 				<tr>
 					<th scope="col">#</th>
-					<th scope="col">First</th>
-					<th scope="col">Last</th>
-					<th scope="col">Handle</th>
+					<th scope="col">Name</th>
+					<th scope="col">Phone Number</th>
+					<th scope="col">Email</th>
+					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>@mdo</td>
-				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-				</tr>
-				<tr>
-					<th scope="row">3</th>
-					<td colspan="2">Larry the Bird</td>
-					<td>@twitter</td>
-				</tr>
+				<?php 
+					foreach($query->display() as $index => $row_data){
+						echo '
+							<tr>
+								<th scope="row">{$index}</th>
+								<td scope="row">Mark</td>
+								<td scope="row">Otto</td>
+								<td scope="row">@mdo</td>
+								<td scope="row" class="action-column">
+									<div class="btn-group" role="group">
+										<button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Action
+										</button>
+										<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+											<a class="dropdown-item" data-toggle="modal" data-target="#edit-contact-modal">Edit</a>
+											<a class="dropdown-item" data-toggle="modal" data-target="#delete-contact-modal">Delete</a>
+										</div>
+										<?php 
+											include "./assets/includes/edit-contact-modal.inc.php";
+											include "./assets/includes/delete -contact-modal.inc.php";
+										?>
+									</div>
+								</td>
+							</tr>
+						';
+					}
+				?>
 			</tbody>
 		</table>
 	</div>
