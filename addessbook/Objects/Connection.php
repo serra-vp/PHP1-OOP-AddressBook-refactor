@@ -1,9 +1,9 @@
 <?php 
 
 //Include Interface Iconnect here..
-include './IConnect.php';
+include 'IConnect.php';
 
-Class Connection implements IConnect {
+class Connection implements IConnect {
 
 	//Variables
 	private $host= "localhost";
@@ -17,8 +17,8 @@ Class Connection implements IConnect {
 	}
 
 	//Add your methods below
-	protected function connect(){
-    $database = new PDO("mysql:host={$this->host};dbname={$this->databaseName};charset=utf8mb4', {$this->uname}, {$this->pword}");
+	public function connect(){
+    $database = new PDO("mysql:host={$this->host};dbname={$this->databaseName}", $this->uname, $this->pword);
     $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $database;
   }

@@ -2,20 +2,30 @@
 
 <?php 
 //Inlude the Query class here ..
-include "./Objects/Query.php";
+include "Objects/Query.php";
 
 $self = $_SERVER['PHP_SELF'];
 
 //Default methods
-
-/*
-	display()
-	insert($_GET)
-	update($id,$_GET)
-	delete($id)
-*/
-
-$query = new Query();
+	$query = new Query();$query = new Query();
+	//insert($_GET)
+	if(isset($_REQUEST['add-btn'])){
+	  array_splice($_POST,-1,1);
+	  $query->insert($_POST);
+	}
+	//update($id,$_GET)
+	elseif(isset($_REQUEST['update-btn'])){
+	  $id = $_POST['update-btn'];
+	  array_splice($_POST,-1,1);
+	  $query->update($id,$_POST);
+	}
+	//delete($id)
+	elseif(isset($_REQUEST['delete-btn'])){
+	  $id = $_POST['delete-btn'];
+	  $query->delete($id);
+	}
+	//display()
+	$contact_list_array = $query->display();
 ?>
 
 
@@ -85,7 +95,18 @@ $query = new Query();
 		.btn-group{
 			margin: auto;
 		}
-		
+
+		.dropdown-item{
+			cursor: pointer;
+		}
+
+		.dropdown-item:hover{
+			background-color: #e5e6e6!important; 
+		}
+
+		.h4-confirmation{
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
@@ -114,31 +135,31 @@ $query = new Query();
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
-					foreach($query->display() as $index => $row_data){
-						echo '
-							<tr>
-								<th scope="row">{$index}</th>
-								<td scope="row">Mark</td>
-								<td scope="row">Otto</td>
-								<td scope="row">@mdo</td>
-								<td scope="row" class="action-column">
-									<div class="btn-group" role="group">
-										<button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Action
-										</button>
-										<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-											<a class="dropdown-item" data-toggle="modal" data-target="#edit-contact-modal">Edit</a>
-											<a class="dropdown-item" data-toggle="modal" data-target="#delete-contact-modal">Delete</a>
-										</div>
-										<?php 
-											include "./assets/includes/edit-contact-modal.inc.php";
-											include "./assets/includes/delete -contact-modal.inc.php";
-										?>
-									</div>
-								</td>
-							</tr>
-						';
+				<?php
+					foreach($contact_list_array as $index => $row_data){
+				?>
+					<tr>
+						<th scope="row"><?php echo ++$index ?></th>
+						<td scope="row"><?php echo $row_data['name'] ?></td>
+						<td scope="row"><?php echo $row_data['phone'] ?></td>
+						<td scope="row"><?php echo $row_data['email'] ?></td>
+						<td scope="row" class="action-column">
+							<div class="btn-group" role="group">
+								<button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Action
+								</button>
+								<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+									<a class="dropdown-item" data-toggle="modal" data-target="#edit-contact-modal-<?php echo $index ?>">Edit</a>
+									<a class="dropdown-item" data-toggle="modal" data-target="#delete-contact-modal-<?php echo $index ?>">Delete</a>
+								</div>
+								<?php 
+									include "./assets/includes/edit-contact-modal.inc.php";
+									include "./assets/includes/delete-contact-modal.inc.php";
+								?>
+							</div>
+						</td>
+					</tr>
+				<?php
 					}
 				?>
 			</tbody>

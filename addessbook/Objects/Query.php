@@ -1,9 +1,9 @@
 <?php 
 
 //Include Connection class here..
-include './Connection.php';
+include 'Connection.php';
 
-Class Query extends Connection {
+class Query extends Connection {
 	
 	public function __construct()
 	{
@@ -16,27 +16,32 @@ Class Query extends Connection {
 		$fetch_address_statement = $this->connect()->prepare("SELECT * FROM address");
 		$fetch_address_statement->execute();
 		
-		return $asd = $fetch_address_statement -> fetch();
-		echo '<script>console.log($asd)</script>';
-
-		// $get_test_query = $database -> prepare("SELECT * FROM analysis, test WHERE analysis.analysis_ID = test.test_analysis_ID AND test.test_analysis_ID = ?");
-		// $get_test_query -> execute(array($selected_analysis_ID));
-		// while($get_test_row = $get_test_query -> fetch(PDO::FETCH_ASSOC)){
+		return $fetch_address_statement -> fetchAll();
 	}
 
 	public function insert($get)
 	{
 	  //your insert code here
+	  $get = array($get['contact-name'],$get['contact-number'],$get['contact-email']);
+	  $insert_contact_statement = $this->connect()->prepare("INSERT INTO address(name,phone,email) VALUES(?,?,?)");
+	  $insert_contact_statement->execute($get);
 	}
 
 	public function update($id,$get)
 	{
-	 //your update code here
+	  //your update code here
+	  $id = intval($id);
+	  $get = array($get['contact-name'],$get['contact-number'],$get['contact-email'],$id);
+	  $update_contact_statement = $this->connect()->prepare("UPDATE address SET name=?,phone=?,email=? WHERE id = ?");
+	  $update_contact_statement->execute($get); 
 	}
 
 	public function delete($id)
 	{
-	 //your delete code
+	  //your delete code
+	  $id = intval($id);
+	  $delete_contact_statement = $this->connect()->prepare("DELETE FROM address WHERE id = ?");
+	  $delete_contact_statement->execute(array($id));
 	}
 } 
 
