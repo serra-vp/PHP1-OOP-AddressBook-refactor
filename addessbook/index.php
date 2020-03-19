@@ -7,7 +7,7 @@ include "Objects/Query.php";
 $self = $_SERVER['PHP_SELF'];
 
 //Default methods
-	$query = new Query();$query = new Query();
+	$query = new Query();
 	//insert($_GET)
 	if(isset($_REQUEST['add-btn'])){
 	  array_splice($_POST,-1,1);
@@ -37,11 +37,9 @@ $self = $_SERVER['PHP_SELF'];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Address Book V.1.0</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">	
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-	<script>swal("Hello world!");</script>
 	<header>
 		<nav class="navbar navbar-dark bg-dark">
 			<a class="navbar-brand" href="#">
