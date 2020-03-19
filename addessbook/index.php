@@ -37,77 +37,7 @@ $self = $_SERVER['PHP_SELF'];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Address Book V.1.0</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">	
-	<style>
-		*{
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			font-size: 16px;
-		}
-
-		html, body{
-			height: 100%;
-			width: 100%;
-		}
-
-		header{
-			border: 1px solid black;
-			height: 7%;
-		}
-
-		header > nav{
-			display: flex;
-			height: 100%;
-			justify-content: flex-start;
-		}
-
-		header > nav > a{
-			margin: auto auto auto 15px;
-			height: 100%;	
-			outline: none;
-		}
-
-		.contact-list{
-			margin: 0 auto;
-			border-radius: 12px;	
-			height: 70%;
-			width: 75%;
-			overflow: auto;
-		}
-
-		.add-contact{
-			margin: 3% auto auto;
-			width: 75%;
-			height: 5%;
-			display: flex;
-			flex-direction: column;
-		}
-
-		.add-contact > button{
-			align-self: flex-end;
-			margin: auto 0;
-		}
-
-		.action-column{
-			display: flex;
-		}
-
-		.btn-group{
-			margin: auto;
-		}
-
-		.dropdown-item{
-			cursor: pointer;
-		}
-
-		.dropdown-item:hover{
-			background-color: #e5e6e6!important; 
-		}
-
-		.h4-confirmation{
-			text-align: center;
-		}
-	</style>
+	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 	<header>
