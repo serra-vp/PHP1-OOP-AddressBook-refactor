@@ -1,6 +1,7 @@
 <?php error_reporting(1); ?>
-
 <?php 
+
+// echo "<pre>".print_r($_SERVER)."</pre>";
 //Inlude the Query class here ..
 include "Objects/Query.php";
 
@@ -37,19 +38,17 @@ $self = $_SERVER['PHP_SELF'];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Address Book V.1.0</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 	<header>
 		<nav class="navbar navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">
-				<img src="assets/images/imageonline-co-invertedimage.png" width="30" height="30" class="d-inline-block align-top" alt="">
-			</a>
 		</nav>
 	</header>
 	<div class="add-contact">
-		<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add-contact-modal">
-			Add Contact
+		<button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#add-contact-modal">
+			<i class="fa fa-user-plus"></i> Add Contact
 		</button>
 		<?php include "./assets/includes/add-contact-modal.inc.php"?>
 	</div>
@@ -79,8 +78,14 @@ $self = $_SERVER['PHP_SELF'];
 									Action
 								</button>
 								<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-									<a class="dropdown-item" data-toggle="modal" data-target="#edit-contact-modal-<?php echo $index ?>">Edit</a>
-									<a class="dropdown-item" data-toggle="modal" data-target="#delete-contact-modal-<?php echo $index ?>">Delete</a>
+									<a class="dropdown-item" data-toggle="modal" data-target="#edit-contact-modal-<?php echo $index ?>">
+										<i class="fa fas fa-edit"></i>
+										Edit
+									</a>
+									<a class="dropdown-item" data-toggle="modal" data-target="#delete-contact-modal-<?php echo $index ?>">
+										<i class="fa far fa-trash"></i>
+										Delete
+									</a>
 								</div>
 								<?php 
 									include "./assets/includes/edit-contact-modal.inc.php";
@@ -95,8 +100,15 @@ $self = $_SERVER['PHP_SELF'];
 			</tbody>
 		</table>
 	</div>
+	<script>sweetAlert()</script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+	const sweetAlert = () => {
+		Swal.fire('Any fool can use a computer');
+	}
+</script>
 </body>
 </html>

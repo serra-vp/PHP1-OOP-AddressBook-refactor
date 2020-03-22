@@ -25,6 +25,7 @@ class Query extends Connection {
 	  $get = array($get['contact-name'],$get['contact-number'],$get['contact-email']);
 	  $insert_contact_statement = $this->connect()->prepare("INSERT INTO address(name,phone,email) VALUES(?,?,?)");
 	  $insert_contact_statement->execute($get);
+	  header("Location: index.php");
 	}
 
 	public function update($id,$get)
@@ -34,6 +35,7 @@ class Query extends Connection {
 	  $get = array($get['contact-name'],$get['contact-number'],$get['contact-email'],$id);
 	  $update_contact_statement = $this->connect()->prepare("UPDATE address SET name=?,phone=?,email=? WHERE id = ?");
 	  $update_contact_statement->execute($get); 
+	  header("Location: index.php");
 	}
 
 	public function delete($id)
@@ -42,6 +44,7 @@ class Query extends Connection {
 	  $id = intval($id);
 	  $delete_contact_statement = $this->connect()->prepare("DELETE FROM address WHERE id = ?");
 	  $delete_contact_statement->execute(array($id));
+	  header("Location: index.php");
 	}
 } 
 
