@@ -1,7 +1,7 @@
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <?php error_reporting(1); ?>
 <?php 
-
-// echo "<pre>".print_r($_SERVER)."</pre>";
 //Inlude the Query class here ..
 include "Objects/Query.php";
 
@@ -9,24 +9,24 @@ $self = $_SERVER['PHP_SELF'];
 
 //Default methods
 	$query = new Query();
+	//display()
+	$contact_list_array = $query->display();
 	//insert($_GET)
 	if(isset($_REQUEST['add-btn'])){
 	  array_splice($_POST,-1,1);
-	  $query->insert($_POST);
+	  $contact_list_array = $query->insert($_POST)->display();
 	}
 	//update($id,$_GET)
 	elseif(isset($_REQUEST['update-btn'])){
 	  $id = $_POST['update-btn'];
 	  array_splice($_POST,-1,1);
-	  $query->update($id,$_POST);
+	  $contact_list_array = $query->update($id,$_POST)->display();
 	}
 	//delete($id)
 	elseif(isset($_REQUEST['delete-btn'])){
 	  $id = $_POST['delete-btn'];
-	  $query->delete($id);
+	  $contact_list_array = $query->delete($id)->display();
 	}
-	//display()
-	$contact_list_array = $query->display();
 ?>
 
 
@@ -37,11 +37,29 @@ $self = $_SERVER['PHP_SELF'];
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Address Book V.1.0</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<script>
+			const SourAlert = () => {
+				Swal.fire({
+					icon: "<?php echo $GLOBALS['data']['icon'] ?>",
+					title: "<?php echo $GLOBALS['data']['title'] ?>",
+					text: "<?php echo $GLOBALS['data']['text'] ?>",
+					confirmButtonText: 'Okay'				
+				})
+			}
+	</script>
 </head>
 <body>
+	<?php 
+		if($GLOBALS['alert']){
+			echo "<script>SourAlert()</script>";
+			unset($GLOBALS['alert'],$GLOBALS['data']);
+		}
+	?>
 	<header>
 		<nav class="navbar navbar-dark bg-dark">
 		</nav>
@@ -74,7 +92,7 @@ $self = $_SERVER['PHP_SELF'];
 						<td scope="row"><?php echo $row_data['email'] ?></td>
 						<td scope="row" class="action-column">
 							<div class="btn-group" role="group">
-								<button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Action
 								</button>
 								<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -100,15 +118,7 @@ $self = $_SERVER['PHP_SELF'];
 			</tbody>
 		</table>
 	</div>
-	<script>sweetAlert()</script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script>
-	const sweetAlert = () => {
-		Swal.fire('Any fool can use a computer');
-	}
-</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

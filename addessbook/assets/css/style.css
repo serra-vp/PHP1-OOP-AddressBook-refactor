@@ -33,7 +33,7 @@ header > nav{
     overflow: auto;
 }
 
-div.contact-list thead th{
+div.contact-list > thead > th{
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
@@ -92,13 +92,12 @@ table{
 .dropdown-menu{
     min-width: auto !important;
 }
+
+.show{
+    right: 0px !important;
+}
+
 .dropdown-item{
     text-align: center !important;
     padding: .25rem 0.9rem !important;
 }
-
-
-/* 
-position: -webkit-sticky;
-position: sticky;
-  */

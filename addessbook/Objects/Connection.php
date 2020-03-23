@@ -13,14 +13,19 @@ class Connection implements IConnect {
 
 	public function __construct()
 	{
-
+    self::connect();
 	}
 
 	//Add your methods below
 	public function connect(){
-    $database = new PDO("mysql:host={$this->host};dbname={$this->databaseName}", $this->uname, $this->pword);
-    $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    return $database;
+    try{
+      $database = new PDO("mysql:host={$this->host};dbname={$this->databaseName}", $this->uname, $this->pword);
+      $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+      return $database;
+    }
+    catch(PDOException $error) {
+      throw new $error->getMessage();      
+    }
   }
 }
 
