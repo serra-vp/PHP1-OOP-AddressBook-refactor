@@ -33,7 +33,7 @@ header > nav{
     overflow: auto;
 }
 
-div.contact-list > thead > th{
+div.contact-list thead th{
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
